@@ -1,0 +1,23 @@
+h1{
+  font-weight: 700;
+  font-size: 45px;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+input{
+  width: 100%;
+  height: 100%
+}
+.input1{
+  text-align: left;
+}
+
+
+.kg-b{
+  min-width: 80px;
+} 
+
+.kg-row{
+  margin: 10px 5px;
+}
