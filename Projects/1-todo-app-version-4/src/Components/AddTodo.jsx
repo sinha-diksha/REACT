@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import TodoItem from "./TodoItem";
 import { MdOutlineLibraryAdd } from "react-icons/md";
+import { TodoItemsContext } from "../Store/todo-items-store";
 
-function AddTodo({ onNewItem }) {
+function AddTodo() {
+  const { addNewItem } = useContext(TodoItemsContext);
   const todoNameElement = useRef();
   const dueDateElement = useRef();
   const noOfClicks = useRef(0);
@@ -13,7 +15,7 @@ function AddTodo({ onNewItem }) {
     const dueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
-    onNewItem(todoName, dueDate);
+    addNewItem(todoName, dueDate);
   };
   return (
     <div className="container text-center">
