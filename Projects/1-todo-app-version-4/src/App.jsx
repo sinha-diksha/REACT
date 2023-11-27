@@ -14,27 +14,31 @@ import TodoItem from "./Components/TodoItem";
 function App() {
   const InitialtodoItems = [];
   const [todoItems, settodoItems] = useState(InitialtodoItems);
-  const handleNewItem = (itemName, itemDueDate) => {
+  const addNewItem = (itemName, itemDueDate) => {
     settodoItems((currentValue) => [
       ...currentValue,
       { name: itemName, dueDate: itemDueDate },
     ]);
   };
 
-  const handleDeleteItem = (todoItemName) => {
+  const deleteItem = (todoItemName) => {
     console.log(`item deleted ${todoItemName}`);
     const newTodoItem = todoItems.filter((item) => item.name !== todoItemName);
     settodoItems(newTodoItem);
   };
   return (
-    <TodoItemsContext.Provider value={[]}>
+    <TodoItemsContext.Provider
+      value={{
+        todoItems,
+        addNewItem,
+        deleteItem,
+      }}
+    >
       <center className="todo-container">
         <AppName />
-        <AddTodo onNewItem={handleNewItem} />
-        <WelcomeMessage todoItems={todoItems}></WelcomeMessage>
-        <TodoItems todoItems={todoItems} onDeleteClick={handleDeleteItem}>
-          {" "}
-        </TodoItems>
+        <AddTodo />
+        <WelcomeMessage></WelcomeMessage>
+        <TodoItems> </TodoItems>
       </center>
     </TodoItemsContext.Provider>
   );
